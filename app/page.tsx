@@ -42,7 +42,8 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Descubra uma nova maneira de alcançar seus objetivos
+              A Hype Fy ajuda a aumentar sua presença online com seguidores e curtidas para Instagram, YouTube, TikTok e Kwai. 
+              Mais visibilidade e engajamento para o seu perfil!
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
