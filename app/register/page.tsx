@@ -17,7 +17,11 @@ import SocialLoginButton from '@/components/auth/social-login-button'
 const registerFormSchema = z.object({
   name: z.string().min(2, { message: 'O nome deve ter pelo menos 2 caracteres' }),
   email: z.string().email({ message: 'Por favor, insira um endereço de e-mail válido' }),
-  password: z.string().min(6, { message: 'A senha deve ter pelo menos 6 caracteres' }),
+  password: z.string().min(8, { message: 'A senha deve ter pelo menos 8 caracteres' }),
+  confirmPassword: z.string(),
+}).refine((data) => data.password === data.confirmPassword, {
+  message: 'As senhas não conferem',
+  path: ['confirmPassword'],
 })
 
 type RegisterFormValues = z.infer<typeof registerFormSchema>
@@ -32,6 +36,7 @@ export default function RegisterPage() {
       name: '',
       email: '',
       password: '',
+      confirmPassword: '',
     },
   })
 
@@ -130,7 +135,44 @@ export default function RegisterPage() {
                             <Eye className="h-4 w-4" />
                           )}
                           <span className="sr-only">
-                            {showPassword ? 'Hide password' : 'Show password'}
+                            {showPassword ? 'Ocultar senha' : 'Mostrar senha'}
+                          </span>
+                        </Button>
+                      </div>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="confirmPassword"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Confirme sua senha</FormLabel>
+                    <FormControl>
+                      <div className="relative">
+                        <Lock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                        <Input
+                          type={showPassword ? 'text' : 'password'}
+                          placeholder="••••••••"
+                          className="pl-10 pr-10"
+                          {...field}
+                        />
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          size="sm"
+                          className="absolute right-0 top-0 h-full px-3 py-2 text-muted-foreground hover:text-foreground"
+                          onClick={toggleShowPassword}
+                        >
+                          {showPassword ? (
+                            <EyeOff className="h-4 w-4" />
+                          ) : (
+                            <Eye className="h-4 w-4" />
+                          )}
+                          <span className="sr-only">
+                            {showPassword ? 'Ocultar senha' : 'Mostrar senha'}
                           </span>
                         </Button>
                       </div>
@@ -167,7 +209,7 @@ export default function RegisterPage() {
               className="h-auto p-0 text-primary"
               asChild
             >
-              <Link href="/">Entrar</Link>
+              <Link href="/login">Entrar</Link>
             </Button>
           </p>
         </CardFooter>
