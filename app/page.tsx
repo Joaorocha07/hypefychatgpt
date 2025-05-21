@@ -3,8 +3,14 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, ChevronDown, Facebook, Instagram, MessageCircle, Phone, Users, Youtube } from 'lucide-react'
-import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Pagination, Autoplay } from 'swiper/modules'
+
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/autoplay'
 
 const socialServices = [
   {
@@ -84,7 +90,6 @@ const testimonials = [
 ]
 
 export default function Home() {
-  const [activeTestimonial, setActiveTestimonial] = useState(0)
   const [openFaq, setOpenFaq] = useState<number | null>(null)
 
   return (
@@ -111,7 +116,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-[#fbc94c]/10 to-transparent pointer-events-none" />
           <div className="text-center space-y-8 relative z-10 px-4">
             <motion.h1 
-              className="text-5xl md:text-6xl font-bold text-white"
+              className="text-4xl sm:text-5xl md:text-6xl font-bold text-white"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -119,7 +124,7 @@ export default function Home() {
               Potencialize sua presença digital
             </motion.h1>
             <motion.p 
-              className="text-xl text-gray-300 max-w-2xl mx-auto"
+              className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -232,16 +237,16 @@ export default function Home() {
               O que dizem nossos clientes
             </h2>
             <div className="max-w-4xl mx-auto">
-              <div className="relative">
+              <Swiper
+                modules={[Pagination, Autoplay]}
+                spaceBetween={30}
+                slidesPerView={1}
+                pagination={{ clickable: true }}
+                autoplay={{ delay: 5000 }}
+                className="pb-12"
+              >
                 {testimonials.map((testimonial, index) => (
-                  <motion.div
-                    key={index}
-                    className={`${
-                      activeTestimonial === index ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-                    } absolute inset-0 transition-all duration-500 ease-in-out`}
-                    initial={false}
-                    animate={{ opacity: activeTestimonial === index ? 1 : 0 }}
-                  >
+                  <SwiperSlide key={index}>
                     <div className="bg-[#2a2a2a] rounded-xl p-8 shadow-xl">
                       <div className="flex items-center space-x-4 mb-6">
                         <img
@@ -256,20 +261,9 @@ export default function Home() {
                       </div>
                       <p className="text-gray-300 text-lg">{testimonial.content}</p>
                     </div>
-                  </motion.div>
+                  </SwiperSlide>
                 ))}
-              </div>
-              <div className="flex justify-center mt-8 space-x-2">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      activeTestimonial === index ? 'bg-[#fbc94c]' : 'bg-gray-600'
-                    }`}
-                    onClick={() => setActiveTestimonial(index)}
-                  />
-                ))}
-              </div>
+              </Swiper>
             </div>
           </div>
         </section>
