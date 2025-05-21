@@ -1,21 +1,22 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
-import { Eye, EyeOff, Mail, Lock, ArrowRight } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import { z } from 'zod'
+import { useForm } from 'react-hook-form'
 import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Eye, EyeOff, Mail, Lock, ArrowRight } from 'lucide-react'
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+
+import Link from 'next/link'
 import SocialLoginButton from './social-login-button'
 
 const loginFormSchema = z.object({
-  email: z.string().email({ message: 'Please enter a valid email address' }),
-  password: z.string().min(6, { message: 'Password must be at least 6 characters' }),
+  email: z.string().email({ message: 'Por favor, insira um endereço de e-mail válido' }),
+  password: z.string().min(6, { message: 'A senha deve ter pelo menos 6 caracteres' }),
 })
 
 type LoginFormValues = z.infer<typeof loginFormSchema>
