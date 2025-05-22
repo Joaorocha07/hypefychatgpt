@@ -18,7 +18,8 @@ import {
   User,
   MenuIcon,
   Sun,
-  Moon
+  Moon,
+  MessageCircle
 } from 'lucide-react'
 import Link from 'next/link'
 
@@ -73,7 +74,7 @@ export default function DashboardLayout({
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-14 items-center justify-between">
+        <div className="container flex h-16 items-center justify-between px-4">
           <div className="flex items-center gap-4">
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
@@ -81,38 +82,42 @@ export default function DashboardLayout({
                   <MenuIcon className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="w-72">
-                <div className="flex items-center gap-2 mb-6">
-                  <img
-                    src="/images/logo-preto.png"
-                    alt="Hype Fy Logo"
-                    className="h-8 w-auto dark:hidden"
-                  />
-                  <img
-                    src="/images/logo-branco.png"
-                    alt="Hype Fy Logo"
-                    className="h-8 w-auto hidden dark:block"
-                  />
-                </div>
-                <div className="space-y-4 py-4">
-                  {menuItems.map((item) => {
-                    const Icon = item.icon
-                    const isActive = pathname === item.href
-                    
-                    return (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className={`flex items-center space-x-2 rounded-lg px-3 py-2 text-sm transition-all hover:bg-accent ${
-                          isActive ? 'bg-accent' : ''
-                        }`}
-                      >
-                        <Icon className="h-4 w-4" />
-                        <span>{item.title}</span>
-                      </Link>
-                    )
-                  })}
+              <SheetContent side="left" className="w-[80vw] sm:w-72 p-0">
+                <div className="flex flex-col h-full">
+                  <div className="p-4 border-b">
+                    <img
+                      src="/images/logo-preto.png"
+                      alt="Hype Fy Logo"
+                      className="h-8 w-auto dark:hidden"
+                    />
+                    <img
+                      src="/images/logo-branco.png"
+                      alt="Hype Fy Logo"
+                      className="h-8 w-auto hidden dark:block"
+                    />
+                  </div>
+                  <div className="flex-1 overflow-y-auto">
+                    <nav className="space-y-1 p-2">
+                      {menuItems.map((item) => {
+                        const Icon = item.icon
+                        const isActive = pathname === item.href
+                        
+                        return (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className={`flex items-center space-x-3 rounded-lg px-3 py-3 text-sm transition-all hover:bg-accent ${
+                              isActive ? 'bg-accent' : ''
+                            }`}
+                          >
+                            <Icon className="h-5 w-5" />
+                            <span>{item.title}</span>
+                          </Link>
+                        )
+                      })}
+                    </nav>
+                  </div>
                 </div>
               </SheetContent>
             </Sheet>
@@ -129,17 +134,18 @@ export default function DashboardLayout({
               />
             </div>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="rounded-full"
             >
               <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
               <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
               <span className="sr-only">Toggle theme</span>
             </Button>
-            <Button variant="ghost" size="icon" asChild>
+            <Button variant="ghost" size="icon" asChild className="rounded-full">
               <Link href="/dashboard/profile">
                 <Avatar>
                   <AvatarImage src="https://github.com/shadcn.png" alt="User" />
@@ -151,11 +157,11 @@ export default function DashboardLayout({
         </div>
       </header>
 
-      <div className="container grid md:grid-cols-[250px_1fr]">
+      <div className="container grid md:grid-cols-[250px_1fr] gap-4">
         {/* Sidebar */}
         <aside className="hidden border-r md:block">
           <div className="sticky top-16 overflow-y-auto py-6 pr-4">
-            <nav className="space-y-2">
+            <nav className="space-y-1">
               {menuItems.map((item) => {
                 const Icon = item.icon
                 const isActive = pathname === item.href
@@ -164,11 +170,11 @@ export default function DashboardLayout({
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`group flex items-center rounded-md px-3 py-2 text-sm font-medium transition-all hover:bg-accent ${
+                    className={`group flex items-center rounded-lg px-3 py-2.5 text-sm font-medium transition-all hover:bg-accent ${
                       isActive ? 'bg-accent text-accent-foreground' : 'text-muted-foreground'
                     }`}
                   >
-                    <Icon className={`mr-2 h-4 w-4 transition-transform group-hover:scale-110 ${
+                    <Icon className={`mr-3 h-5 w-5 transition-transform group-hover:scale-110 ${
                       isActive ? 'text-foreground' : ''
                     }`} />
                     {item.title}
@@ -180,8 +186,18 @@ export default function DashboardLayout({
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 py-6 pl-4">{children}</main>
+        <main className="flex-1 py-6 px-4 md:pl-4">{children}</main>
       </div>
+
+      {/* WhatsApp Button */}
+      <a
+        href="https://wa.me/5511999999999"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-green-500 text-white rounded-full p-3 shadow-lg hover:bg-green-600 transition-all duration-300 hover:scale-110"
+      >
+        <MessageCircle className="h-6 w-6" />
+      </a>
     </div>
   )
 }

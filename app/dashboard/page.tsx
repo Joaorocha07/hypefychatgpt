@@ -94,7 +94,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Platform Filter - Mobile Carousel */}
-      <div className="md:hidden">
+      <div className="md:hidden -mx-4 px-4">
         <Swiper
           modules={[FreeMode]}
           spaceBetween={10}
