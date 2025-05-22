@@ -13,6 +13,8 @@ import 'swiper/css'
 import 'swiper/css/autoplay'
 import 'swiper/css/pagination'
 
+import Logo from '@/public/images/logo-branco.png'
+
 import Link from 'next/link'
 
 export default function Home() {
@@ -23,7 +25,11 @@ export default function Home() {
       <header className="fixed top-0 w-full bg-[#1a1a1a]/80 backdrop-blur-sm z-50 border-b border-gray-800">
         <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" className="text-white text-xl font-bold">
-            Hype Fy
+            <img
+              src={Logo.src}
+              alt={'Hype Fy Logo'}
+              className="w-28 md:w-60 h-auto object-cover"
+            />
           </Link>
           <div className="space-x-4">
             <Button variant="ghost" className="text-white hover:text-[#fbc94c]" asChild>
