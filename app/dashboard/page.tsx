@@ -7,12 +7,7 @@ import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
 import { Wallet, TrendingDown, AlertCircle } from 'lucide-react'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { FreeMode } from 'swiper/modules'
 import useDashboardViewModel from './dashboardViewModel'
-
-import 'swiper/css'
-import 'swiper/css/free-mode'
 
 const socialPlatforms = [
   { id: 'all', name: 'Todos', icon: '🌐' },
@@ -51,7 +46,7 @@ export default function DashboardPage() {
     <div className="space-y-6">
       {/* Balance Cards */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        <Card className="p-6 bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300">
+        <Card className="p-6">
           <div className="flex items-center space-x-4">
             <div className="rounded-full bg-primary/10 p-3">
               <Wallet className="h-6 w-6 text-primary" />
@@ -61,11 +56,11 @@ export default function DashboardPage() {
               <h3 className="text-2xl font-bold">R$ 1.000,00</h3>
             </div>
           </div>
-          <Button className="mt-4 w-full bg-primary hover:bg-primary/90" size="sm">
+          <Button className="mt-4 w-full" size="sm">
             Adicionar Saldo
           </Button>
         </Card>
-        <Card className="p-6 bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300">
+        <Card className="p-6">
           <div className="flex items-center space-x-4">
             <div className="rounded-full bg-destructive/10 p-3">
               <TrendingDown className="h-6 w-6 text-destructive" />
@@ -78,43 +73,19 @@ export default function DashboardPage() {
         </Card>
       </div>
 
-      {/* Platform Filter - Desktop */}
-      <div className="hidden md:flex flex-wrap gap-2">
+      {/* Platform Filter */}
+      <div className="flex flex-wrap gap-2">
         {socialPlatforms.map((platform) => (
           <Button
             key={platform.id}
             variant={selectedPlatform === platform.id ? 'default' : 'outline'}
-            className="flex items-center space-x-2 transition-all hover:scale-105 bg-white dark:bg-gray-800 shadow-sm"
+            className="flex items-center space-x-2 transition-all hover:scale-105"
             onClick={() => handlePlatformChange(platform.id)}
           >
-            <span className="text-xl">{platform.icon}</span>
+            <span>{platform.icon}</span>
             <span>{platform.name}</span>
           </Button>
         ))}
-      </div>
-
-      {/* Platform Filter - Mobile Carousel */}
-      <div className="md:hidden -mx-4 px-4">
-        <Swiper
-          modules={[FreeMode]}
-          spaceBetween={10}
-          slidesPerView="auto"
-          freeMode={true}
-          className="w-full"
-        >
-          {socialPlatforms.map((platform) => (
-            <SwiperSlide key={platform.id} style={{ width: 'auto' }}>
-              <Button
-                variant={selectedPlatform === platform.id ? 'default' : 'outline'}
-                className="flex items-center space-x-2 whitespace-nowrap bg-white dark:bg-gray-800 shadow-sm"
-                onClick={() => handlePlatformChange(platform.id)}
-              >
-                <span className="text-xl">{platform.icon}</span>
-                <span>{platform.name}</span>
-              </Button>
-            </SwiperSlide>
-          ))}
-        </Swiper>
       </div>
 
       <div className="grid lg:grid-cols-[2fr,1fr] gap-6">
