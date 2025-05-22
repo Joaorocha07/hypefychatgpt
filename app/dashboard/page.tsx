@@ -7,6 +7,7 @@ import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
 import { Wallet, TrendingDown } from 'lucide-react'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import useDashboardViewModel from './dashboardViewModel'
 
 const socialPlatforms = [
   { id: 'all', name: 'Todos', icon: '🌐' },
@@ -21,23 +22,7 @@ const socialPlatforms = [
 ]
 
 export default function DashboardPage() {
-  const [selectedPlatform, setSelectedPlatform] = useState('all')
-  const [orderDetails, setOrderDetails] = useState({
-    category: '',
-    service: '',
-    description: '',
-    link: '',
-    quantity: '',
-  })
-
-  const handlePlatformChange = (platform: string) => {
-    setSelectedPlatform(platform)
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log('Order submitted:', orderDetails)
-  }
+  const { handlePlatformChange, handleSubmit, orderDetails, selectedPlatform, setOrderDetails } = useDashboardViewModel()
 
   return (
     <div className="space-y-6">
