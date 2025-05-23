@@ -27,7 +27,7 @@ const menuItems = [
   {
     title: 'Novo Pedido',
     icon: Home,
-    href: '/dashboard'
+    href: '/dashboard/new-order'
   },
   {
     title: 'Multi Pedidos',
