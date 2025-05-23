@@ -1,24 +1,25 @@
 'use client'
 
-import { useState } from 'react'
 import { Card } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
 import { Wallet, TrendingDown, AlertCircle } from 'lucide-react'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { FaInstagram, FaTwitter, FaTiktok, FaYoutube, FaFacebook, FaTelegram, FaTwitch, FaDiscord } from 'react-icons/fa'
+
 import useDashboardViewModel from './dashboardViewModel'
 
 const socialPlatforms = [
   { id: 'all', name: 'Todos', icon: '🌐' },
-  { id: 'instagram', name: 'Instagram', icon: '📸' },
-  { id: 'twitter', name: 'Twitter', icon: '🐦' },
-  { id: 'tiktok', name: 'TikTok', icon: '🎵' },
-  { id: 'youtube', name: 'YouTube', icon: '▶️' },
-  { id: 'facebook', name: 'Facebook', icon: '👤' },
-  { id: 'telegram', name: 'Telegram', icon: '📱' },
-  { id: 'twitch', name: 'Twitch', icon: '🎮' },
-  { id: 'discord', name: 'Discord', icon: '💬' }
+  { id: 'instagram', name: 'Instagram', icon: <FaInstagram /> },
+  { id: 'twitter', name: 'Twitter', icon: <FaTwitter /> },
+  { id: 'tiktok', name: 'TikTok', icon: <FaTiktok /> },
+  { id: 'youtube', name: 'YouTube', icon: <FaYoutube /> },
+  { id: 'facebook', name: 'Facebook', icon: <FaFacebook /> },
+  { id: 'telegram', name: 'Telegram', icon: <FaTelegram /> },
+  { id: 'twitch', name: 'Twitch', icon: <FaTwitch /> },
+  { id: 'discord', name: 'Discord', icon: <FaDiscord /> }
 ]
 
 const notices = [
@@ -79,7 +80,7 @@ export default function DashboardPage() {
           <Button
             key={platform.id}
             variant={selectedPlatform === platform.id ? 'default' : 'outline'}
-            className="flex items-center space-x-2 transition-all hover:scale-105"
+            className="flex items-center space-x-2 transition-all hover:scale-0.001"
             onClick={() => handlePlatformChange(platform.id)}
           >
             <span>{platform.icon}</span>
