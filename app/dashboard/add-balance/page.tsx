@@ -1,13 +1,14 @@
 'use client'
 
 import { useState } from 'react'
+
 import { Card } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
+import { AlertCircle, Copy, Wallet } from 'lucide-react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { AlertCircle, Copy, Wallet } from 'lucide-react'
 
 const predefinedAmounts = [5, 10, 50, 100, 200]
 const qrCodeUrl = 'https://images.pexels.com/photos/8370752/pexels-photo-8370752.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
@@ -21,21 +22,43 @@ export default function AddBalancePage() {
     setAmount(prev => {
       const currentAmount = prev === '' 
         ? 0 
-        : parseFloat(prev.replace(',', '.'));
+        : parseFloat(prev.replace(',', '.'))
 
-      const newAmount = currentAmount + value;
+      const newAmount = currentAmount + value
 
-      return newAmount.toFixed(2).replace('.', ',');
-    });
-  };
+      return newAmount.toFixed(2).replace('.', ',')
+    })
+  }
 
-  const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value
+const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  let value = e.target.value
 
-    if (/^\d*[,.]?\d{0,2}$/.test(value)) {
-      const normalized = value.replace('.', ',');
-      setAmount(normalized);
+    if (/^[\d.,]*$/.test(value)) {
+      const numericString = value.replace(/\./g, '').replace(',', '.')
+
+      const numericValue = parseFloat(numericString)
+
+      if (!isNaN(numericValue) && numericValue <= 10000) {
+        setAmount(value)
+      } else if (value === '') {
+        setAmount('')
+      }
     }
+  }
+
+  const handleAmountBlur = () => {
+    if (!amount) return
+
+    let numericValue = parseFloat(amount.replace(/\./g, '').replace(',', '.')) || 0
+
+    if (numericValue > 10000) numericValue = 10000
+
+    const formatted = numericValue.toLocaleString('pt-BR', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    })
+
+    setAmount(formatted)
   }
 
   const handlePayment = () => {
@@ -53,7 +76,7 @@ export default function AddBalancePage() {
         <div className="flex-1 space-y-4">
           <h2 className="text-2xl font-bold">Adicionar Saldo</h2>
           <p className="text-sm text-muted-foreground">
-            Saldo mínimo para depósito: R$ 1,00
+            Saldo mínimo para depósito: <strong className="text-green-600">R$ 1,00</strong>
           </p>
 
           <Tabs defaultValue="deposit" className="w-full">
@@ -87,13 +110,14 @@ export default function AddBalancePage() {
 
                   <div className="space-y-2">
                     <label className="text-sm font-medium">Valor</label>
-                    <Input
-                      type="text"
-                      value={amount}
-                      onChange={handleAmountChange}
-                      placeholder="0.00"
-                      className="text-lg"
-                    />
+                      <Input
+                        type="text"
+                        value={amount}
+                        onChange={handleAmountChange}
+                        onBlur={handleAmountBlur}
+                        placeholder="0,00"
+                        className="text-lg"
+                      />
                   </div>
 
                   <div className="grid grid-cols-5 gap-2">
@@ -102,7 +126,7 @@ export default function AddBalancePage() {
                         key={value}
                         variant="outline"
                         onClick={() => handleAmountClick(value)}
-                        className="w-full"
+                        className="w-full text-xs sm:text-sm"
                       >
                         R$ {value}
                       </Button>
