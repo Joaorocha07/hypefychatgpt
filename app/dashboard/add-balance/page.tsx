@@ -19,15 +19,22 @@ export default function AddBalancePage() {
 
   const handleAmountClick = (value: number) => {
     setAmount(prev => {
-      const currentAmount = prev === '' ? 0 : parseFloat(prev)
-      return (currentAmount + value).toString()
-    })
-  }
+      const currentAmount = prev === '' 
+        ? 0 
+        : parseFloat(prev.replace(',', '.'));
+
+      const newAmount = currentAmount + value;
+
+      return newAmount.toFixed(2).replace('.', ',');
+    });
+  };
 
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
-    if (/^\d*\.?\d*$/.test(value)) {
-      setAmount(value)
+
+    if (/^\d*[,.]?\d{0,2}$/.test(value)) {
+      const normalized = value.replace('.', ',');
+      setAmount(normalized);
     }
   }
 

@@ -160,7 +160,7 @@ export default function DashboardLayout({
       <div className="container grid md:grid-cols-[250px_1fr] gap-4">
         {/* Sidebar */}
         <aside className="hidden border-r md:block">
-          <div className="sticky top-16 overflow-y-auto py-6 pr-4">
+          <div className="sticky top-16 overflow-y-auto py-6 pr-4" style={{ height: 'calc(100vh - 4rem)' }}>
             <nav className="space-y-1">
               {menuItems.map((item) => {
                 const Icon = item.icon
