@@ -134,7 +134,7 @@ export default function DashboardLayout({
               />
             </div>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 ml-auto">
             <Button
               variant="ghost"
               size="icon"
@@ -200,4 +200,3 @@ export default function DashboardLayout({
       </a>
     </div>
   )
-}
