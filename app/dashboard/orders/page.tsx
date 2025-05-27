@@ -101,12 +101,10 @@ export default function OrdersPage() {
       <Card className="p-6">
         <div className="flex flex-col md:flex-row gap-4">
           <div className="flex-1 flex gap-4">
-            <Button
-              variant="outline"
-              className="flex items-center gap-2"
-            >
+            <div className="flex items-center gap-2">
               <Filter className="h-4 w-4" />
               <Select
+                defaultValue="all"
                 value={statusFilter}
                 onValueChange={setStatusFilter}
               >
@@ -123,7 +121,7 @@ export default function OrdersPage() {
                   <SelectItem value="Cancelado">Cancelado</SelectItem>
                 </SelectContent>
               </Select>
-            </Button>
+            </div>
           </div>
           <div className="relative flex-1 md:max-w-sm">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -216,4 +214,3 @@ export default function OrdersPage() {
       </div>
     </div>
   )
-}
