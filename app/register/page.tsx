@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
+import { useRouter } from 'next/navigation'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -12,6 +13,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 
 import Link from 'next/link'
+import registerService from '@/service/register/registerService'
 import SocialLoginButton from '@/components/auth/social-login-button'
 
 const registerFormSchema = z.object({
@@ -27,7 +29,9 @@ const registerFormSchema = z.object({
 type RegisterFormValues = z.infer<typeof registerFormSchema>
 
 export default function RegisterPage() {
+  const router = useRouter()
   const [showPassword, setShowPassword] = useState(false)
+  const [showPasswordConfirm, setShowConfirm] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
   const form = useForm<RegisterFormValues>({
@@ -43,11 +47,29 @@ export default function RegisterPage() {
   const toggleShowPassword = () => {
     setShowPassword(!showPassword)
   }
+  
+  const toggleShowPasswordConfirm = () => {
+    setShowConfirm(!showPasswordConfirm)
+  }
 
   async function onSubmit(values: RegisterFormValues) {
     setIsLoading(true)
     // Simulate API call
     console.log(values)
+
+    const response = await registerService({
+      nome: values.name,
+      email: values.email,
+      password: values.password
+    })
+
+    console.log(response)
+
+     if (response && response.error === '') {
+      router.push('/dashboard')
+    } else {
+      console.log('Erro ao fazer login:', response)
+    }
     
     // Artificial delay to simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1500))
@@ -154,7 +176,7 @@ export default function RegisterPage() {
                       <div className="relative">
                         <Lock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                         <Input
-                          type={showPassword ? 'text' : 'password'}
+                          type={showPasswordConfirm ? 'text' : 'password'}
                           placeholder="••••••••"
                           className="pl-10 pr-10"
                           {...field}
@@ -164,15 +186,15 @@ export default function RegisterPage() {
                           variant="ghost"
                           size="sm"
                           className="absolute right-0 top-0 h-full px-3 py-2 text-muted-foreground hover:text-foreground"
-                          onClick={toggleShowPassword}
+                          onClick={toggleShowPasswordConfirm}
                         >
-                          {showPassword ? (
+                          {showPasswordConfirm ? (
                             <EyeOff className="h-4 w-4" />
                           ) : (
                             <Eye className="h-4 w-4" />
                           )}
                           <span className="sr-only">
-                            {showPassword ? 'Ocultar senha' : 'Mostrar senha'}
+                            {showPasswordConfirm ? 'Ocultar senha' : 'Mostrar senha'}
                           </span>
                         </Button>
                       </div>

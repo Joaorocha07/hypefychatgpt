@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
+import { useRouter } from 'next/navigation'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -13,6 +14,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 
 import Link from 'next/link'
 import SocialLoginButton from './social-login-button'
+import loginService from '@/service/login/loginService'
 
 const loginFormSchema = z.object({
   email: z.string().email({ message: 'Por favor, insira um endereço de e-mail válido' }),
@@ -22,6 +24,7 @@ const loginFormSchema = z.object({
 type LoginFormValues = z.infer<typeof loginFormSchema>
 
 export default function LoginForm() {
+  const router = useRouter()
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -40,8 +43,20 @@ export default function LoginForm() {
   async function onSubmit(values: LoginFormValues) {
     setIsLoading(true)
     // Simulate API call
-    console.log(values)
     
+    const response = await loginService({
+      email: values.email,
+      password: values.password
+    })
+
+    console.log(response)
+
+     if (response && response.error === '') {
+      router.push('/dashboard')
+    } else {
+      console.log('Erro ao fazer login:', response)
+    }
+
     // Artificial delay to simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1500))
     

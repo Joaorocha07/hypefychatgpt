@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function useDashboardViewModel() {
+export default function useNewOrderViewModel() {
   const [selectedPlatform, setSelectedPlatform] = useState('all')
   const [orderDetails, setOrderDetails] = useState({
     category: '',

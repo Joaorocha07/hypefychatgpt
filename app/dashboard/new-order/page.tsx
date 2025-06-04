@@ -8,7 +8,10 @@ import { Wallet, TrendingDown, AlertCircle } from 'lucide-react'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { FaInstagram, FaTwitter, FaTiktok, FaYoutube, FaFacebook, FaTelegram, FaTwitch, FaDiscord } from 'react-icons/fa'
 
-import useDashboardViewModel from './dashboardViewModel'
+import useNewOrderViewModel from './useNewOrderViewModel'
+import { useEffect, useState } from 'react'
+import serviceFollowers, { IServiceFollowers } from './newOrderService'
+
 
 const socialPlatforms = [
   { id: 'all', name: 'Todos', icon: '🌐' },
@@ -41,7 +44,44 @@ const notices = [
 ]
 
 export default function DashboardPage() {
-  const { handlePlatformChange, handleSubmit, orderDetails, selectedPlatform, setOrderDetails } = useDashboardViewModel()
+  const [categories, setCategories] = useState<IServiceFollowers[]>([])
+  const [selectedCategory, setSelectedCategory] = useState<string>('')
+  const [isLoading, setIsLoading] = useState(true)
+
+  const { 
+    orderDetails, 
+    selectedPlatform, 
+    handleSubmit, 
+    setOrderDetails,
+    handlePlatformChange, 
+  } = useNewOrderViewModel()
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (categories.length === 0) {
+        const response = await serviceFollowers({
+          action: 'services'
+        })
+
+        if (response !== null) {
+          setCategories([response])
+          console.log(response)
+        }
+        console.log(response)
+        setIsLoading(false)
+      }
+    }
+
+    fetchData()
+  }, [])
+
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category)
+  }
+
+  console.log(categories)
+  console.log('aqui')
+  console.log(isLoading)
 
   return (
     <div className="space-y-6">
@@ -103,18 +143,28 @@ export default function DashboardPage() {
               />
             </div>
 
+            
             <div className="space-y-2">
               <Label htmlFor="category">Categoria</Label>
-              <Select>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Selecione uma categoria" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="followers">Seguidores</SelectItem>
-                  <SelectItem value="likes">Curtidas</SelectItem>
-                  <SelectItem value="views">Visualizações</SelectItem>
-                </SelectContent>
-              </Select>
+
+              {isLoading ? (
+                <div className="animate-pulse space-y-4">
+                  <div className="w-full h-8 bg-gray-300 rounded"></div>
+                </div>
+              ) : (
+                  <Select onValueChange={handleCategoryChange}>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Selecione uma categoria" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {categories.map((category, index) => (
+                        <SelectItem key={index} value={category.category}>
+                          {category.category}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                )}
             </div>
 
             <div className="space-y-2">
