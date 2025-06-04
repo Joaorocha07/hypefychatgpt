@@ -1,13 +1,12 @@
 'use client'
 
-import { useState } from 'react'
-import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { useTheme } from 'next-themes'
 import { 
-  Menu,
   Home,
   Plus,
   Wallet,
@@ -15,7 +14,7 @@ import {
   RotateCcw,
   HeadphonesIcon,
   Settings,
-  User,
+  LogOut,
   MenuIcon,
   Sun,
   Moon,
@@ -58,6 +57,11 @@ const menuItems = [
     title: 'Serviços',
     icon: Settings,
     href: '/dashboard/services'
+  },
+  {
+    title: 'Sair',
+    icon: LogOut,
+    href: '/'
   }
 ]
 
@@ -67,8 +71,28 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   const pathname = usePathname()
+  const [isLoading, setIsLoading] = useState(true)
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const { theme, setTheme } = useTheme()
+  const router = useRouter()
+
+  useEffect(() => {
+    const user = localStorage.getItem('isAuthenticated')
+
+    if (user) {
+      setIsAuthenticated(true)
+    } else {
+      router.push('/login')
+    }
+    
+    setIsLoading(false)
+  }, [router])
+
+  if (isLoading) {
+    return null 
+  }
+
 
   return (
     <div className="min-h-screen bg-background">

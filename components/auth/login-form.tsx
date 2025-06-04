@@ -27,6 +27,7 @@ export default function LoginForm() {
   const router = useRouter()
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(loginFormSchema),
@@ -42,7 +43,7 @@ export default function LoginForm() {
 
   async function onSubmit(values: LoginFormValues) {
     setIsLoading(true)
-    // Simulate API call
+    setErrorMessage(null)
     
     const response = await loginService({
       email: values.email,
@@ -51,13 +52,15 @@ export default function LoginForm() {
 
     console.log(response)
 
-     if (response && response.error === '') {
+    if (response === null) {
+      setErrorMessage('Ocorreu um erro ao logar sua conta. Tente novamente.')
+    } else if (!response.error) {
+      localStorage.setItem('isAuthenticated', 'true')
       router.push('/dashboard')
     } else {
-      console.log('Erro ao fazer login:', response)
+      setErrorMessage(response?.msgUser)
     }
 
-    // Artificial delay to simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1500))
     
     setIsLoading(false)
@@ -72,6 +75,11 @@ export default function LoginForm() {
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
+        {errorMessage && (
+          <div className="text-red-600 bg-red-100 p-4 rounded-md mt-4">
+            <strong></strong> {errorMessage}
+          </div>
+        )}
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField

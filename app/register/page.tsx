@@ -33,6 +33,7 @@ export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [showPasswordConfirm, setShowConfirm] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const form = useForm<RegisterFormValues>({
     resolver: zodResolver(registerFormSchema),
@@ -54,8 +55,6 @@ export default function RegisterPage() {
 
   async function onSubmit(values: RegisterFormValues) {
     setIsLoading(true)
-    // Simulate API call
-    console.log(values)
 
     const response = await registerService({
       nome: values.name,
@@ -65,13 +64,14 @@ export default function RegisterPage() {
 
     console.log(response)
 
-     if (response && response.error === '') {
-      router.push('/dashboard')
+    if (response === null) {
+      setErrorMessage('Ocorreu um erro ao registrar sua conta. Tente novamente.')
+    } else if (!response.error) {
+      router.push('/login')
     } else {
-      console.log('Erro ao fazer login:', response)
+      setErrorMessage(response?.msgUser)
     }
     
-    // Artificial delay to simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1500))
     
     setIsLoading(false)
@@ -87,6 +87,11 @@ export default function RegisterPage() {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
+          {errorMessage && (
+            <div className="text-red-600 bg-red-100 p-4 rounded-md mt-4">
+              <strong></strong> {errorMessage}
+            </div>
+          )}
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
               <FormField
