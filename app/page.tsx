@@ -19,7 +19,6 @@ import Link from 'next/link'
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
-  console.log("aqui")
 
   useEffect(() => {
     localStorage.removeItem('isAuthenticated') 
