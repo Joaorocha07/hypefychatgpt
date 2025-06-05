@@ -14,7 +14,6 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 
 import Link from 'next/link'
 import SocialLoginButton from './social-login-button'
-import loginService from '@/service/login/loginService'
 
 const loginFormSchema = z.object({
   email: z.string().email({ message: 'Por favor, insira um endereço de e-mail válido' }),

@@ -13,7 +13,6 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 
 import Link from 'next/link'
-import registerService from '@/service/register/registerService'
 import SocialLoginButton from '@/components/auth/social-login-button'
 
 const registerFormSchema = z.object({

@@ -9,9 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { FaInstagram, FaTwitter, FaTiktok, FaYoutube, FaFacebook, FaTelegram, FaTwitch, FaDiscord } from 'react-icons/fa'
 
 import useNewOrderViewModel from './useNewOrderViewModel'
-import { useEffect, useState } from 'react'
-import serviceFollowers, { IServiceFollowers } from './newOrderService'
-
+import { useState } from 'react'
 
 const socialPlatforms = [
   { id: 'all', name: 'Todos', icon: '🌐' },
@@ -44,7 +42,6 @@ const notices = [
 ]
 
 export default function DashboardPage() {
-  const [categories, setCategories] = useState<IServiceFollowers[]>([])
   const [selectedCategory, setSelectedCategory] = useState<string>('')
   const [isLoading, setIsLoading] = useState(true)
 
@@ -153,11 +150,14 @@ export default function DashboardPage() {
                       <SelectValue placeholder="Selecione uma categoria" />
                     </SelectTrigger>
                     <SelectContent>
-                      {categories.map((category, index) => (
+                      {/* {categories.map((category, index) => (
                         <SelectItem key={index} value={category.category}>
                           {category.category}
                         </SelectItem>
-                      ))}
+                      ))} */}
+                      <SelectItem value="service1">Serviço 1</SelectItem>
+                      <SelectItem value="service2">Serviço 2</SelectItem>
+                      <SelectItem value="service3">Serviço 3</SelectItem>
                     </SelectContent>
                   </Select>
                 )}
