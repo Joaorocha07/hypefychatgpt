@@ -56,21 +56,21 @@ export default function RegisterPage() {
   async function onSubmit(values: RegisterFormValues) {
     setIsLoading(true)
 
-    const response = await registerService({
-      nome: values.name,
-      email: values.email,
-      password: values.password
-    })
+    // const response = await registerService({
+    //   nome: values.name,
+    //   email: values.email,
+    //   password: values.password
+    // })
 
-    console.log(response)
+    // console.log(response)
 
-    if (response === null) {
-      setErrorMessage('Ocorreu um erro ao registrar sua conta. Tente novamente.')
-    } else if (!response.error) {
-      router.push('/login')
-    } else {
-      setErrorMessage(response?.msgUser)
-    }
+    // if (response === null) {
+    //   setErrorMessage('Ocorreu um erro ao registrar sua conta. Tente novamente.')
+    // } else if (!response.error) {
+    //   router.push('/login')
+    // } else {
+    //   setErrorMessage(response?.msgUser)
+    // }
     
     await new Promise((resolve) => setTimeout(resolve, 1500))
     
