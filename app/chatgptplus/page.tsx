@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { ArrowRight, Check, Crown, Diamond, Shield, Bot, Zap, FileSearch, Tool, Link as LinkIcon, Brain } from 'lucide-react'
+import { ArrowRight, Check, Crown, Diamond, Shield, Bot, Zap, FileSearch, PenTool as Tool, Link as LinkIcon, Brain } from 'lucide-react'
 
 const features = [
   {
@@ -495,3 +495,4 @@ export default function ChatGPTPlusPage() {
       </section>
     </div>
   )
+}
