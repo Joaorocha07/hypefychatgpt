@@ -44,6 +44,8 @@ export default function LoginForm() {
   async function onSubmit(values: LoginFormValues) {
     setIsLoading(true)
     setErrorMessage(null)
+
+    console.log(values)
     
     // const response = await loginService({
     //   email: values.email,

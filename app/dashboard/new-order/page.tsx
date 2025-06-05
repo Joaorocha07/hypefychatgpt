@@ -56,32 +56,28 @@ export default function DashboardPage() {
     handlePlatformChange, 
   } = useNewOrderViewModel()
 
-  useEffect(() => {
-    const fetchData = async () => {
-      if (categories.length === 0) {
-        const response = await serviceFollowers({
-          action: 'services'
-        })
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     if (categories.length === 0) {
+  //       const response = await serviceFollowers({
+  //         action: 'services'
+  //       })
 
-        if (response !== null) {
-          setCategories([response])
-          console.log(response)
-        }
-        console.log(response)
-        setIsLoading(false)
-      }
-    }
+  //       if (response !== null) {
+  //         setCategories([response])
+  //         console.log(response)
+  //       }
+  //       console.log(response)
+  //       setIsLoading(false)
+  //     }
+  //   }
 
-    fetchData()
-  }, [])
+  //   fetchData()
+  // }, [])
 
   const handleCategoryChange = (category: string) => {
     setSelectedCategory(category)
   }
-
-  console.log(categories)
-  console.log('aqui')
-  console.log(isLoading)
 
   return (
     <div className="space-y-6">

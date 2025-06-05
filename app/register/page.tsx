@@ -56,6 +56,8 @@ export default function RegisterPage() {
   async function onSubmit(values: RegisterFormValues) {
     setIsLoading(true)
 
+    console.log(values)
+
     // const response = await registerService({
     //   nome: values.name,
     //   email: values.email,
