@@ -123,6 +123,8 @@ const beneficiaries = [
 export default function ChatGPTPlusPage() {
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null)
 
+  console.log(selectedPlan)
+
   return (
     <div className="min-h-screen bg-[#1a1a1a]">
       {/* Hero Section */}
