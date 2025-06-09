@@ -123,7 +123,16 @@ const beneficiaries = [
 export default function ChatGPTPlusPage() {
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null)
 
-  console.log(selectedPlan)
+  function handleSelectPlan(plan: string) {
+    setSelectedPlan(plan)
+    if (plan === 'Silver') {
+      window.location.href = 'https://pay.cakto.com.br/3627vxe_425199'
+    } else if (plan === 'Gold') {
+      window.location.href = 'https://pay.cakto.com.br/p4ujtpb_425376'
+    } else if (plan === 'Diamond') {
+      window.location.href = 'https://pay.cakto.com.br/kvcjfyi_425386'
+    }
+  }
 
   return (
     <div className="min-h-screen bg-[#1a1a1a]">
@@ -374,7 +383,7 @@ export default function ChatGPTPlusPage() {
                     </ul>
                     <Button 
                       className="w-full bg-[#fbc94c] text-black hover:bg-[#fbc94c]/90"
-                      onClick={() => setSelectedPlan(plan.name)}
+                      onClick={() => handleSelectPlan(plan.name)}
                     >
                       Escolher Plano
                       <ArrowRight className="ml-2 h-4 w-4" />
