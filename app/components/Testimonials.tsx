@@ -1,15 +1,21 @@
-'use client';
+'use client'
 
-import { useCallback, useEffect } from 'react';
-import useEmblaCarousel from 'embla-carousel-react';
-import Autoplay from 'embla-carousel-autoplay';
+import useEmblaCarousel from 'embla-carousel-react'
+import Autoplay from 'embla-carousel-autoplay'
+
+import avaliacao01 from '@/public/images/avaliacao-01.jpg'
+import avaliacao02 from '@/public/images/avaliacao-02.jpg'
+import avaliacao03 from '@/public/images/avaliacao-03.jpg'
+import avaliacao04 from '@/public/images/avaliacao-04.jpg'
+import avaliacao05 from '@/public/images/avaliacao-05.jpg'
+import Image from 'next/image'
 
 export default function Testimonials() {
   const scrollToServices = () => {
     document.getElementById('servicos')?.scrollIntoView({ 
       behavior: 'smooth' 
-    });
-  };
+    })
+  }
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { 
@@ -22,22 +28,36 @@ export default function Testimonials() {
       }
     },
     [Autoplay({ delay: 3000, stopOnInteraction: false })]
-  );
+  )
 
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
 
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
-
-  // Testimonial cards data
-  const testimonials = Array.from({ length: 8 }, (_, index) => ({
-    id: index + 1,
-    title: `Avaliação ${index + 1}`,
-  }));
-
+  const testimonials = [
+    {
+      id: 1,
+      title: 'Cliente 1',
+      image: avaliacao01,
+    },
+    {
+      id: 2,
+      title: 'Cliente 2',
+      image: avaliacao02,
+    },
+    {
+      id: 3,
+      title: 'Cliente 3',
+      image: avaliacao03,
+    },
+    {
+      id: 4,
+      title: 'Cliente 4',
+      image: avaliacao04,
+    },
+    {
+      id: 5,
+      title: 'Cliente 5',
+      image: avaliacao05,
+    }
+  ]
   return (
     <section id="depoimentos" className="py-20 bg-white relative overflow-hidden">
       {/* Background decoration */}
@@ -56,25 +76,6 @@ export default function Testimonials() {
 
         {/* Carousel Container */}
         <div className="relative max-w-7xl mx-auto mb-12">
-          {/* Navigation Buttons */}
-          <button
-            onClick={scrollPrev}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-gray-200 flex items-center justify-center hover:bg-white hover:shadow-xl transition-all duration-300 group"
-          >
-            <svg className="w-5 h-5 text-gray-600 group-hover:text-[#ffa800] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-
-          <button
-            onClick={scrollNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-lg border border-gray-200 flex items-center justify-center hover:bg-white hover:shadow-xl transition-all duration-300 group"
-          >
-            <svg className="w-5 h-5 text-gray-600 group-hover:text-[#ffa800] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-
           {/* Embla Carousel */}
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex gap-6">
@@ -87,9 +88,11 @@ export default function Testimonials() {
                     className="w-full bg-gray-100 flex items-center justify-center text-gray-400 text-sm font-medium"
                     style={{ aspectRatio: '1080/1920' }}
                   >
-                    {testimonial.title}
-                    <br />
-                    (1080x1920)
+                    <Image
+                      src={testimonial.image}
+                      alt={testimonial.title}
+                      className="object-cover"
+                    />
                   </div>
                 </div>
               ))}
@@ -107,5 +110,5 @@ export default function Testimonials() {
         </div>
       </div>
     </section>
-  );
+  )
 }
