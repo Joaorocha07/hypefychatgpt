@@ -19,7 +19,7 @@ export default function Testimonials() {
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { 
-      loop: true,
+      loop: false,
       align: 'center',
       slidesToScroll: 1,
       breakpoints: {
