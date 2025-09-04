@@ -9,7 +9,7 @@ import ImageCanva from '@/public/images/fundo-canva.png'
 import ImageCapCut from '@/public/images/fundo-cap-cut.webp'
 import ImageNetflix from '@/public/images/fundo-netflix.webp'
 import ImageCrunchyroll from '@/public/images/fundo-crunchyroll.webp'
-import Seguidores from '@/public/images/testee.png'
+import Seguidores from '@/public/images/engajamento.png'
 
 const services = [
   {
