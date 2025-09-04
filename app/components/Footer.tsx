@@ -1,6 +1,9 @@
-'use client';
+'use client'
 
-import { Instagram, MessageCircle } from 'lucide-react';
+import { Instagram } from 'lucide-react'
+
+import Image from 'next/image'
+import LogoWhatsApp from '@/public/images/whatssap-branco.png'
 
 export default function Footer() {
   return (
@@ -18,17 +21,25 @@ export default function Footer() {
           {/* Social Links */}
           <div className="flex items-center justify-center space-x-8 mb-8">
             <a
-              href="#"
+              href="https://www.instagram.com/hypefy_agencia"
+              target="_blank"
               className="group flex items-center justify-center w-14 h-14 bg-white/10 rounded-full hover:bg-[#ffa800] transition-all duration-300 transform hover:scale-110"
             >
               <Instagram className="w-6 h-6 group-hover:text-white transition-colors duration-300" />
             </a>
             
             <a
-              href="#"
+              href="https://wa.me/553498262737"
+              target="_blank"
               className="group flex items-center justify-center w-14 h-14 bg-white/10 rounded-full hover:bg-[#ffa800] transition-all duration-300 transform hover:scale-110"
             >
-              <MessageCircle className="w-6 h-6 group-hover:text-white transition-colors duration-300" />
+              <Image
+                src={LogoWhatsApp}
+                alt="WhatsApp Logo"
+                width={500}
+                height={300}
+                className="w-8 h-8 text-white group-hover:scale-110 transition-transform"
+              />
             </a>
           </div>
 

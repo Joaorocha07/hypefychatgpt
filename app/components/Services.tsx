@@ -21,7 +21,7 @@ const services = [
       'Utilizado para estudo',
       'Conta compartilhada'
     ],
-    buyLink: '#'
+    buyLink: 'https://pay.cakto.com.br/3627vxe_425199'
   },
   {
     title: 'CANVA POR UM ANO',
@@ -33,7 +33,7 @@ const services = [
       'Todos os recursos premium liberado',
       'Com privacidade'
     ],
-    buyLink: '#'
+    buyLink: 'https://pay.cakto.com.br/ks35m3b_425403'
   },
   {
     title: 'CAP CUT POR UM MÊS',
@@ -115,7 +115,7 @@ export default function Services() {
                   ))}
                 </ul>
 
-                <button className="w-full bg-gradient-to-r from-[#ffa800] to-[#ff8c00] text-white py-3 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group">
+                <button onClick={() => window.open(service.buyLink, '_blank')} className="w-full bg-gradient-to-r from-[#ffa800] to-[#ff8c00] text-white py-3 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group">
                   Comprar
                   <ExternalLink size={16} className="group-hover:translate-x-1 transition-transform duration-200" />
                 </button>
