@@ -1,19 +1,21 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { useState } from 'react'
+import { Menu, X } from 'lucide-react'
+import { cn } from '@/lib/utils'
+import Image from 'next/image'
+import logo from '@/public/images/hypefy.png'
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navItems = [
     { label: 'Início', href: '#inicio' },
     { label: 'Serviços', href: '#servicos' },
     { label: 'Depoimentos', href: '#depoimentos' },
     { label: 'Sobre nós', href: '#sobre' },
-    { label: 'Entrar em contato', href: '#contato' },
-  ];
+    { label: 'Entrar em contato', href: '#contato' }
+  ]
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
@@ -21,8 +23,14 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <div className="w-10 h-10 bg-gradient-to-br from-[#ffa800] to-[#ff8c00] rounded-lg flex items-center justify-center shadow-lg">
-              <span className="text-white font-bold text-xl">H</span>
+            <div className="w-12 h-12 rounded-full overflow-hidden shadow-lg">
+              <Image
+                src={logo}
+                alt="Hypefy Logo"
+                width={50}
+                height={50}
+                className="object-cover rounded-full"
+              />
             </div>
             <span className="ml-3 text-xl font-bold text-gray-900">Hypefy</span>
           </div>
@@ -70,5 +78,5 @@ export default function Header() {
         </div>
       </div>
     </header>
-  );
+  )
 }

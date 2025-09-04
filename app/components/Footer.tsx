@@ -5,15 +5,23 @@ import { Instagram } from 'lucide-react'
 import Image from 'next/image'
 import LogoWhatsApp from '@/public/images/whatssap-branco.png'
 
+import logo from '@/public/images/hypefy.png'
+
 export default function Footer() {
   return (
     <footer id="contato" className="bg-gray-900 text-white py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           {/* Logo */}
-          <div className="flex items-center justify-center mb-8">
-            <div className="w-12 h-12 bg-gradient-to-br from-[#ffa800] to-[#ff8c00] rounded-lg flex items-center justify-center shadow-lg mr-3">
-              <span className="text-white font-bold text-2xl">H</span>
+          <div className="flex items-center justify-center mb-8 gap-3">
+            <div className="w-12 h-12 rounded-full overflow-hidden shadow-lg">
+              <Image
+                src={logo}
+                alt="Hypefy Logo"
+                width={50}
+                height={50}
+                className="object-cover rounded-full"
+              />
             </div>
             <span className="text-2xl font-bold">Hypefy</span>
           </div>

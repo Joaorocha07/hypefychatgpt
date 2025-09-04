@@ -9,6 +9,7 @@ import ImageCanva from '@/public/images/fundo-canva.png'
 import ImageCapCut from '@/public/images/fundo-cap-cut.webp'
 import ImageNetflix from '@/public/images/fundo-netflix.webp'
 import ImageCrunchyroll from '@/public/images/fundo-crunchyroll.webp'
+import Seguidores from '@/public/images/testee.png'
 
 const services = [
   {
@@ -42,7 +43,8 @@ const services = [
     features: [
       'Edite seus vídeos com ferramentas pro',
       'Compatível com Android, iOS e PC',
-      'Você recebe um e-mail e a senha'
+      'Você recebe um e-mail e a senha',
+      'Tenha o acesso por um mês'
     ],
     buyLink: '#'
   },
@@ -53,7 +55,8 @@ const services = [
     features: [
       'Assista suas séries e filmes preferidos',
       'Conta compartilhada',
-      'Pague menos e aproveite muito'
+      'Pague menos e aproveite muito',
+      'Tenha o acesso por um mês'
     ],
     buyLink: '#'
   },
@@ -64,7 +67,20 @@ const services = [
     features: [
       'Assista seus anime preferido',
       'Conta compartilhada',
-      'Pague menos e aproveite muito'
+      'Pague menos e aproveite muito',
+      'Tenha o acesso por um mês'
+    ],
+    buyLink: '#'
+  },
+  {
+    title: 'SERVIÇOS DE ENGAJAMENTO',
+    price: 'CHAME NO WHATSAPP PARA SABER OS VALORES',
+    image: Seguidores,
+    features: [
+      'Seguidores, curtidas e visualizações',
+      'Tiktok, Instagram, YouTube, Kwai, Facebook',
+      'Me chame no whatsapp para mais informações',
+      'Só clicar no botão comprar'
     ],
     buyLink: '#'
   }
