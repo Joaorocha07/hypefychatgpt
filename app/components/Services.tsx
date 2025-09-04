@@ -46,7 +46,7 @@ const services = [
       'Você recebe um e-mail e a senha',
       'Tenha o acesso por um mês'
     ],
-    buyLink: '#'
+    buyLink: 'https://api.whatsapp.com/send/?phone=553498262737&text=Ol%C3%A1%2C+tenho+interesse+em+assinar+o+cap+cut+por+um+m%C3%AAs%21&type=phone_number&app_absent=0&utm_source=chatgpt.com'
   },
   {
     title: 'NETFLIX POR UM MÊS',
@@ -58,7 +58,7 @@ const services = [
       'Pague menos e aproveite muito',
       'Tenha o acesso por um mês'
     ],
-    buyLink: '#'
+    buyLink: 'https://api.whatsapp.com/send/?phone=553498262737&text=Ol%C3%A1%2C+tenho+interesse+em+assinar+a+netflix+por+um+m%C3%AAs%21&type=phone_number&app_absent=0&utm_source=chatgpt.com'
   },
   {
     title: 'CRUNCHYROLL POR UM MÊS',
@@ -70,7 +70,7 @@ const services = [
       'Pague menos e aproveite muito',
       'Tenha o acesso por um mês'
     ],
-    buyLink: '#'
+    buyLink: 'https://api.whatsapp.com/send/?phone=553498262737&text=Ol%C3%A1%2C+tenho+interesse+em+assinar+a+crunchroll+por+um+m%C3%AAs%21&type=phone_number&app_absent=0&utm_source=chatgpt.com'
   },
   {
     title: 'SERVIÇOS DE ENGAJAMENTO',
@@ -82,7 +82,7 @@ const services = [
       'Me chame no whatsapp para mais informações',
       'Só clicar no botão comprar'
     ],
-    buyLink: '#'
+    buyLink: 'https://api.whatsapp.com/send/?phone=553498262737&text=Ol%C3%A1%2C+tenho+interesse+em+servi%C3%A7os+de+engajamento+para+minhas+redes+sociais%21&type=phone_number&app_absent=0&utm_source=chatgpt.com'
   }
 ]
 
