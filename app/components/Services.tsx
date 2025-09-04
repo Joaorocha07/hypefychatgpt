@@ -74,7 +74,7 @@ const services = [
   },
   {
     title: 'SERVIÇOS DE ENGAJAMENTO',
-    price: 'CHAME NO WHATSAPP PARA SABER OS VALORES',
+    price: 'A PARTIR DE R$ 3,00',
     image: Seguidores,
     features: [
       'Seguidores, curtidas e visualizações',
