@@ -91,10 +91,10 @@ export default function PrecosPage() {
             {/* Link para admin */}
             <Link 
               href="/precos/admin"
-              className="inline-flex items-center gap-2 mt-6 text-gray-500 hover:text-[#ffa800] transition-colors"
+              className="inline-flex items-center gap-2 mt-6 text-gray-500 hover:text-[#ffa800] transition-colors text-xs"
             >
               <Settings size={16} />
-              <span className="text-sm">Área Administrativa</span>
+              <span>Admin</span>
             </Link>
           </div>
         </div>
