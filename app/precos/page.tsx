@@ -13,6 +13,8 @@ interface PricingData {
   instagram: {
     mundial: number
     brasileiro: number
+    curtidas: number
+    visualizacoes: number
   }
   tiktok: {
     mundial: number
@@ -24,14 +26,17 @@ interface PricingData {
     inscricoes: number
     visualizacoes: number
     curtidas: number
+    visualizacoesShorts: number
   }
   kwai: {
     seguidores: number
     curtidas: number
+    visualizacoes: number
   }
   facebook: {
     seguidores: number
     curtidas: number
+    visualizacoes: number
   }
 }
 
@@ -39,7 +44,9 @@ interface PricingData {
 const defaultPricing: PricingData = {
   instagram: {
     mundial: 26, // preço para 1000 seguidores mundiais
-    brasileiro: 45 // preço para 1000 seguidores brasileiros
+    brasileiro: 45, // preço para 1000 seguidores brasileiros
+    curtidas: 15, // preço para 1000 curtidas
+    visualizacoes: 15 // preço para 1000 visualizações
   },
   tiktok: {
     mundial: 18, // preço para 1000 seguidores mundiais
@@ -48,17 +55,20 @@ const defaultPricing: PricingData = {
     visualizacoes: 15 // preço para 1000 visualizações
   },
   youtube: {
-    inscricoes: 35, // preço para 1000 inscrições
-    visualizacoes: 12, // preço para 1000 visualizações
-    curtidas: 18 // preço para 1000 curtidas
+    inscricoes: 80, // preço para 1000 inscrições
+    visualizacoes: 15, // preço para 1000 visualizações vídeos
+    curtidas: 12, // preço para 1000 curtidas
+    visualizacoesShorts: 20 // preço para 1000 visualizações shorts
   },
   kwai: {
-    seguidores: 25, // preço para 1000 seguidores
+    seguidores: 22, // preço para 1000 seguidores
     curtidas: 12 // preço para 1000 curtidas
+    visualizacoes: 12 // preço para 1000 visualizações
   },
   facebook: {
-    seguidores: 28, // preço para 1000 seguidores
-    curtidas: 10 // preço para 1000 curtidas
+    seguidores: 16, // preço para 1000 seguidores
+    curtidas: 16, // preço para 1000 curtidas
+    visualizacoes: 12.90 // preço para 1000 visualizações
   }
 }
 
@@ -124,6 +134,20 @@ export default function PrecosPage() {
                   quality: "Qualidade Premium",
                   priceFor1000: pricing.instagram.brasileiro,
                   whatsappMessage: "seguidores brasileiros para Instagram"
+                },
+                {
+                  name: "Curtidas",
+                  type: "curtidas",
+                  quality: "Qualidade Premium",
+                  priceFor1000: pricing.instagram.curtidas,
+                  whatsappMessage: "curtidas para Instagram"
+                },
+                {
+                  name: "Visualizações Reels",
+                  type: "visualizações",
+                  quality: "Qualidade Premium",
+                  priceFor1000: pricing.instagram.visualizacoes,
+                  whatsappMessage: "visualizações para Instagram Reels"
                 }
               ]}
             />
@@ -179,18 +203,25 @@ export default function PrecosPage() {
                   whatsappMessage: "inscrições para YouTube"
                 },
                 {
-                  name: "Visualizações",
+                  name: "Visualizações Vídeos",
                   type: "visualizações",
                   quality: "Qualidade Premium",
                   priceFor1000: pricing.youtube.visualizacoes,
-                  whatsappMessage: "visualizações para YouTube"
+                  whatsappMessage: "visualizações para YouTube (vídeos)"
+                },
+                {
+                  name: "Visualizações Shorts",
+                  type: "visualizações",
+                  quality: "Qualidade Premium",
+                  priceFor1000: pricing.youtube.visualizacoesShorts,
+                  whatsappMessage: "visualizações para YouTube Shorts"
                 },
                 {
                   name: "Curtidas",
                   type: "curtidas",
                   quality: "Qualidade Premium",
                   priceFor1000: pricing.youtube.curtidas,
-                  whatsappMessage: "curtidas para YouTube"
+                  whatsappMessage: "curtidas para YouTube (vídeos)"
                 }
               ]}
             />
@@ -214,6 +245,13 @@ export default function PrecosPage() {
                   quality: "Qualidade Premium",
                   priceFor1000: pricing.kwai.curtidas,
                   whatsappMessage: "curtidas para Kwai"
+                },
+                {
+                  name: "Visualizações",
+                  type: "visualizações",
+                  quality: "Qualidade Premium",
+                  priceFor1000: pricing.kwai.visualizacoes,
+                  whatsappMessage: "visualizações para Kwai"
                 }
               ]}
             />
@@ -237,6 +275,13 @@ export default function PrecosPage() {
                   quality: "Qualidade Premium",
                   priceFor1000: pricing.facebook.curtidas,
                   whatsappMessage: "curtidas para Facebook"
+                },
+                {
+                  name: "Visualizações",
+                  type: "visualizações",
+                  quality: "Qualidade Premium",
+                  priceFor1000: pricing.facebook.visualizacoes,
+                  whatsappMessage: "visualizações para Facebook"
                 }
               ]}
             />

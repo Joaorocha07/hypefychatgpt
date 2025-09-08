@@ -23,6 +23,8 @@ interface PricingData {
   instagram: {
     mundial: number
     brasileiro: number
+    curtidas: number
+    visualizacoes: number
   }
   tiktok: {
     mundial: number
@@ -34,14 +36,17 @@ interface PricingData {
     inscricoes: number
     visualizacoes: number
     curtidas: number
+    visualizacoesShorts: number
   }
   kwai: {
     seguidores: number
     curtidas: number
+    visualizacoes: number
   }
   facebook: {
     seguidores: number
     curtidas: number
+    visualizacoes: number
   }
 }
 
@@ -57,11 +62,11 @@ interface ChatGPTSubscription {
 }
 
 const defaultPricing: PricingData = {
-  instagram: { mundial: 26, brasileiro: 45 },
+  instagram: { mundial: 26, brasileiro: 45, curtidas: 15, visualizacoes: 15 },
   tiktok: { mundial: 18, brasileiro: 30, curtidas: 15, visualizacoes: 15 },
-  youtube: { inscricoes: 35, visualizacoes: 12, curtidas: 18 },
-  kwai: { seguidores: 25, curtidas: 12 },
-  facebook: { seguidores: 28, curtidas: 10 }
+  youtube: { inscricoes: 80, visualizacoes: 15, curtidas: 12, visualizacoesShorts: 20 },
+  kwai: { seguidores: 22, curtidas: 12, visualizacoes: 12 },
+  facebook: { seguidores: 16, curtidas: 16, visualizacoes: 12.90 }
 }
 
 export default function AdminDashboard() {
@@ -133,17 +138,22 @@ export default function AdminDashboard() {
   const services = [
     { value: 'instagram-mundial', label: 'Seguidores Instagram - Mundiais 🌎', price: pricing.instagram.mundial },
     { value: 'instagram-brasileiro', label: 'Seguidores Instagram - Brasileiros 🇧🇷', price: pricing.instagram.brasileiro },
+    { value: 'instagram-curtidas', label: 'Curtidas Instagram ❤️', price: pricing.instagram.curtidas },
+    { value: 'instagram-visualizacoes', label: 'Visualizações Instagram Reels 👁️', price: pricing.instagram.visualizacoes },
     { value: 'tiktok-mundial', label: 'Seguidores TikTok - Mundiais 🌎', price: pricing.tiktok.mundial },
     { value: 'tiktok-brasileiro', label: 'Seguidores TikTok - Brasileiros 🇧🇷', price: pricing.tiktok.brasileiro },
     { value: 'tiktok-curtidas', label: 'Curtidas TikTok ❤️', price: pricing.tiktok.curtidas },
     { value: 'tiktok-visualizacoes', label: 'Visualizações TikTok 👁️', price: pricing.tiktok.visualizacoes },
     { value: 'youtube-inscricoes', label: 'Inscrições YouTube 📺', price: pricing.youtube.inscricoes },
     { value: 'youtube-visualizacoes', label: 'Visualizações YouTube 👁️', price: pricing.youtube.visualizacoes },
+    { value: 'youtube-visualizacoes-shorts', label: 'Visualizações YouTube Shorts 📱', price: pricing.youtube.visualizacoesShorts },
     { value: 'youtube-curtidas', label: 'Curtidas YouTube ❤️', price: pricing.youtube.curtidas },
     { value: 'kwai-seguidores', label: 'Seguidores Kwai 🎬', price: pricing.kwai.seguidores },
     { value: 'kwai-curtidas', label: 'Curtidas Kwai ❤️', price: pricing.kwai.curtidas },
+    { value: 'kwai-visualizacoes', label: 'Visualizações Kwai 👁️', price: pricing.kwai.visualizacoes },
     { value: 'facebook-seguidores', label: 'Seguidores Facebook 👥', price: pricing.facebook.seguidores },
-    { value: 'facebook-curtidas', label: 'Curtidas Facebook ❤️', price: pricing.facebook.curtidas }
+    { value: 'facebook-curtidas', label: 'Curtidas Facebook ❤️', price: pricing.facebook.curtidas },
+    { value: 'facebook-visualizacoes', label: 'Visualizações Facebook 👁️', price: pricing.facebook.visualizacoes }
   ]
 
   const generateMessage = () => {
@@ -337,6 +347,16 @@ Sua confiança é essencial para nós. Aproveite nossos serviços e, se gostou, 
                     value={pricing.instagram.brasileiro}
                     onChange={(value) => updatePrice('instagram', 'brasileiro', value)}
                   />
+                  <PriceInput
+                    label="Curtidas"
+                    value={pricing.instagram.curtidas}
+                    onChange={(value) => updatePrice('instagram', 'curtidas', value)}
+                  />
+                  <PriceInput
+                    label="Visualizações Reels"
+                    value={pricing.instagram.visualizacoes}
+                    onChange={(value) => updatePrice('instagram', 'visualizacoes', value)}
+                  />
                 </div>
               </div>
 
@@ -392,6 +412,11 @@ Sua confiança é essencial para nós. Aproveite nossos serviços e, se gostou, 
                     value={pricing.youtube.curtidas}
                     onChange={(value) => updatePrice('youtube', 'curtidas', value)}
                   />
+                  <PriceInput
+                    label="Visualizações Shorts"
+                    value={pricing.youtube.visualizacoesShorts}
+                    onChange={(value) => updatePrice('youtube', 'visualizacoesShorts', value)}
+                  />
                 </div>
               </div>
 
@@ -412,6 +437,11 @@ Sua confiança é essencial para nós. Aproveite nossos serviços e, se gostou, 
                     value={pricing.kwai.curtidas}
                     onChange={(value) => updatePrice('kwai', 'curtidas', value)}
                   />
+                  <PriceInput
+                    label="Visualizações"
+                    value={pricing.kwai.visualizacoes}
+                    onChange={(value) => updatePrice('kwai', 'visualizacoes', value)}
+                  />
                 </div>
               </div>
 
@@ -431,6 +461,11 @@ Sua confiança é essencial para nós. Aproveite nossos serviços e, se gostou, 
                     label="Curtidas"
                     value={pricing.facebook.curtidas}
                     onChange={(value) => updatePrice('facebook', 'curtidas', value)}
+                  />
+                  <PriceInput
+                    label="Visualizações"
+                    value={pricing.facebook.visualizacoes}
+                    onChange={(value) => updatePrice('facebook', 'visualizacoes', value)}
                   />
                 </div>
               </div>
