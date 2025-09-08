@@ -95,7 +95,7 @@ export default function AdminDashboard() {
   useEffect(() => {
     const isLoggedIn = localStorage.getItem('hypefy-admin-logged')
     if (isLoggedIn !== 'true') {
-      window.location.href = '/admin'
+      window.location.href = '/admin-hype-fy'
     }
   }, [])
 
@@ -114,7 +114,7 @@ export default function AdminDashboard() {
 
   const handleLogout = () => {
     localStorage.removeItem('hypefy-admin-logged')
-    window.location.href = '/admin'
+    window.location.href = '/admin-hype-fy'
   }
 
   const handleSavePricing = () => {

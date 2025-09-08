@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react'
 import { Eye, EyeOff, LogIn } from 'lucide-react'
 
 const ADMIN_CREDENTIALS = {
-  email: 'example@gmail.com',
-  password: 'w9pR5MTrduFu9mUaYBuc'
+  email: 'rocha.joao.victor.50@gmail.com',
+  password: '9PMan04TgqeGg1TcJV4qeTTKfsM'
 }
 
 export default function AdminLoginPage() {
