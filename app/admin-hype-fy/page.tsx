@@ -19,7 +19,7 @@ export default function AdminLoginPage() {
     // Verificar se já está logado
     const isLoggedIn = localStorage.getItem('hypefy-admin-logged')
     if (isLoggedIn === 'true') {
-      window.location.href = '/admin/dashboard'
+      window.location.href = '/admin-hype-fy/dashboard'
     }
   }, [])
 

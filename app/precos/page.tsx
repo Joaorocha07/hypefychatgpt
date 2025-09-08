@@ -1,12 +1,11 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Header from '@/app/components/Header'
+
 import Footer from '@/app/components/Footer'
 import WhatsAppFloat from '@/app/components/WhatsAppFloat'
 import PricingCard from '@/app/components/PricingCard'
-import { Settings } from 'lucide-react'
-import Link from 'next/link'
+import Header from '../components/Header'
 
 // Tipos para os dados de preços
 interface PricingData {
@@ -43,32 +42,32 @@ interface PricingData {
 // Dados padrão
 const defaultPricing: PricingData = {
   instagram: {
-    mundial: 26, // preço para 1000 seguidores mundiais
-    brasileiro: 45, // preço para 1000 seguidores brasileiros
-    curtidas: 15, // preço para 1000 curtidas
-    visualizacoes: 15 // preço para 1000 visualizações
+    mundial: 26,
+    brasileiro: 45,
+    curtidas: 15,
+    visualizacoes: 15
   },
   tiktok: {
-    mundial: 18, // preço para 1000 seguidores mundiais
-    brasileiro: 30, // preço para 1000 seguidores brasileiros
-    curtidas: 15, // preço para 1000 curtidas
-    visualizacoes: 15 // preço para 1000 visualizações
+    mundial: 18,
+    brasileiro: 30,
+    curtidas: 15,
+    visualizacoes: 15
   },
   youtube: {
-    inscricoes: 80, // preço para 1000 inscrições
-    visualizacoes: 15, // preço para 1000 visualizações vídeos
-    curtidas: 12, // preço para 1000 curtidas
-    visualizacoesShorts: 20 // preço para 1000 visualizações shorts
+    inscricoes: 80,
+    visualizacoes: 15,
+    curtidas: 12,
+    visualizacoesShorts: 20
   },
   kwai: {
-    seguidores: 22, // preço para 1000 seguidores
-    curtidas: 12, // preço para 1000 curtidas
-    visualizacoes: 12 // preço para 1000 visualizações
+    seguidores: 22,
+    curtidas: 12,
+    visualizacoes: 12
   },
   facebook: {
-    seguidores: 16, // preço para 1000 seguidores
-    curtidas: 16, // preço para 1000 curtidas
-    visualizacoes: 12.90 // preço para 1000 visualizações
+    seguidores: 16,
+    curtidas: 16,
+    visualizacoes: 12.90
   }
 }
 
@@ -97,15 +96,6 @@ export default function PrecosPage() {
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Escolha o pacote ideal para impulsionar suas redes sociais com os melhores preços do mercado
             </p>
-            
-            {/* Link para admin */}
-            <Link 
-              href="/precos/admin"
-              className="inline-flex items-center gap-2 mt-6 text-gray-500 hover:text-[#ffa800] transition-colors text-xs"
-            >
-              <Settings size={16} />
-              <span>Admin</span>
-            </Link>
           </div>
         </div>
       </section>

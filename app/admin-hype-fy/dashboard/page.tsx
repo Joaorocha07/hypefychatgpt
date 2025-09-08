@@ -6,7 +6,6 @@ import {
   DollarSign, 
   MessageSquare, 
   Users, 
-  Settings,
   Save,
   Trash2,
   Eye,
@@ -590,7 +589,7 @@ Sua confiança é essencial para nós. Aproveite nossos serviços e, se gostou, 
                   </div>
                 ) : (
                   <div className="text-gray-500 text-center py-8">
-                    Preencha os campos e clique em "Gerar Mensagem"
+                    Preencha os campos e clique em &quot;Gerar Mensagem&quot;
                   </div>
                 )}
               </div>
