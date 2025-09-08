@@ -62,7 +62,7 @@ const defaultPricing: PricingData = {
   },
   kwai: {
     seguidores: 22, // preço para 1000 seguidores
-    curtidas: 12 // preço para 1000 curtidas
+    curtidas: 12, // preço para 1000 curtidas
     visualizacoes: 12 // preço para 1000 visualizações
   },
   facebook: {
