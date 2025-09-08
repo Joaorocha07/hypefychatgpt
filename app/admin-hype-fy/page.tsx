@@ -32,7 +32,7 @@ export default function AdminLoginPage() {
     setTimeout(() => {
       if (email === ADMIN_CREDENTIALS.email && password === ADMIN_CREDENTIALS.password) {
         localStorage.setItem('hypefy-admin-logged', 'true')
-        window.location.href = '/admin/dashboard'
+        window.location.href = '/admin-hype-fy/dashboard'
       } else {
         setError('E-mail ou senha incorretos')
       }
