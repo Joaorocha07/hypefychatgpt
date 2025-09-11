@@ -2,6 +2,8 @@ interface CustomHeadProps {
   title: string
 }
 
+import { Analytics } from "@vercel/analytics/next"
+
 import logo from '@/public/images/hypefy.png'
 
 export default function CustomHead({ title }: CustomHeadProps): JSX.Element {
@@ -16,6 +18,7 @@ export default function CustomHead({ title }: CustomHeadProps): JSX.Element {
         type="image/svg+xml"
         sizes="any"
       />
+      <Analytics />
     </>
   )
 }
