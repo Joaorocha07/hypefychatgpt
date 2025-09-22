@@ -1,18 +1,19 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Header from '@/app/components/Header'
+
 import Footer from '@/app/components/Footer'
 import WhatsAppFloat from '@/app/components/WhatsAppFloat'
 import PricingCard from '@/app/components/PricingCard'
-import { Settings } from 'lucide-react'
-import Link from 'next/link'
+import Header from '../components/Header'
 
 // Tipos para os dados de preços
 interface PricingData {
   instagram: {
     mundial: number
     brasileiro: number
+    curtidas: number
+    visualizacoes: number
   }
   tiktok: {
     mundial: number
@@ -24,41 +25,49 @@ interface PricingData {
     inscricoes: number
     visualizacoes: number
     curtidas: number
+    visualizacoesShorts: number
   }
   kwai: {
     seguidores: number
     curtidas: number
+    visualizacoes: number
   }
   facebook: {
     seguidores: number
     curtidas: number
+    visualizacoes: number
   }
 }
 
 // Dados padrão
 const defaultPricing: PricingData = {
   instagram: {
-    mundial: 26, // preço para 1000 seguidores mundiais
-    brasileiro: 45 // preço para 1000 seguidores brasileiros
+    mundial: 26,
+    brasileiro: 45,
+    curtidas: 15,
+    visualizacoes: 15
   },
   tiktok: {
-    mundial: 18, // preço para 1000 seguidores mundiais
-    brasileiro: 30, // preço para 1000 seguidores brasileiros
-    curtidas: 15, // preço para 1000 curtidas
-    visualizacoes: 15 // preço para 1000 visualizações
+    mundial: 18,
+    brasileiro: 30,
+    curtidas: 15,
+    visualizacoes: 15
   },
   youtube: {
-    inscricoes: 35, // preço para 1000 inscrições
-    visualizacoes: 12, // preço para 1000 visualizações
-    curtidas: 18 // preço para 1000 curtidas
+    inscricoes: 80,
+    visualizacoes: 15,
+    curtidas: 12,
+    visualizacoesShorts: 20
   },
   kwai: {
-    seguidores: 25, // preço para 1000 seguidores
-    curtidas: 12 // preço para 1000 curtidas
+    seguidores: 22,
+    curtidas: 12,
+    visualizacoes: 12
   },
   facebook: {
-    seguidores: 28, // preço para 1000 seguidores
-    curtidas: 10 // preço para 1000 curtidas
+    seguidores: 16,
+    curtidas: 16,
+    visualizacoes: 12.90
   }
 }
 
@@ -87,15 +96,6 @@ export default function PrecosPage() {
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Escolha o pacote ideal para impulsionar suas redes sociais com os melhores preços do mercado
             </p>
-            
-            {/* Link para admin */}
-            <Link 
-              href="/precos/admin"
-              className="inline-flex items-center gap-2 mt-6 text-gray-500 hover:text-[#ffa800] transition-colors text-xs"
-            >
-              <Settings size={16} />
-              <span>Admin</span>
-            </Link>
           </div>
         </div>
       </section>
@@ -124,6 +124,20 @@ export default function PrecosPage() {
                   quality: "Qualidade Premium",
                   priceFor1000: pricing.instagram.brasileiro,
                   whatsappMessage: "seguidores brasileiros para Instagram"
+                },
+                {
+                  name: "Curtidas",
+                  type: "curtidas",
+                  quality: "Qualidade Premium",
+                  priceFor1000: pricing.instagram.curtidas,
+                  whatsappMessage: "curtidas para Instagram"
+                },
+                {
+                  name: "Visualizações Reels",
+                  type: "visualizações",
+                  quality: "Qualidade Premium",
+                  priceFor1000: pricing.instagram.visualizacoes,
+                  whatsappMessage: "visualizações para Instagram Reels"
                 }
               ]}
             />
@@ -179,18 +193,25 @@ export default function PrecosPage() {
                   whatsappMessage: "inscrições para YouTube"
                 },
                 {
-                  name: "Visualizações",
+                  name: "Visualizações Vídeos",
                   type: "visualizações",
                   quality: "Qualidade Premium",
                   priceFor1000: pricing.youtube.visualizacoes,
-                  whatsappMessage: "visualizações para YouTube"
+                  whatsappMessage: "visualizações para YouTube (vídeos)"
+                },
+                {
+                  name: "Visualizações Shorts",
+                  type: "visualizações",
+                  quality: "Qualidade Premium",
+                  priceFor1000: pricing.youtube.visualizacoesShorts,
+                  whatsappMessage: "visualizações para YouTube Shorts"
                 },
                 {
                   name: "Curtidas",
                   type: "curtidas",
                   quality: "Qualidade Premium",
                   priceFor1000: pricing.youtube.curtidas,
-                  whatsappMessage: "curtidas para YouTube"
+                  whatsappMessage: "curtidas para YouTube (vídeos)"
                 }
               ]}
             />
@@ -214,6 +235,13 @@ export default function PrecosPage() {
                   quality: "Qualidade Premium",
                   priceFor1000: pricing.kwai.curtidas,
                   whatsappMessage: "curtidas para Kwai"
+                },
+                {
+                  name: "Visualizações",
+                  type: "visualizações",
+                  quality: "Qualidade Premium",
+                  priceFor1000: pricing.kwai.visualizacoes,
+                  whatsappMessage: "visualizações para Kwai"
                 }
               ]}
             />
@@ -237,6 +265,13 @@ export default function PrecosPage() {
                   quality: "Qualidade Premium",
                   priceFor1000: pricing.facebook.curtidas,
                   whatsappMessage: "curtidas para Facebook"
+                },
+                {
+                  name: "Visualizações",
+                  type: "visualizações",
+                  quality: "Qualidade Premium",
+                  priceFor1000: pricing.facebook.visualizacoes,
+                  whatsappMessage: "visualizações para Facebook"
                 }
               ]}
             />

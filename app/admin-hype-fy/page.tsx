@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react'
 import { Eye, EyeOff, LogIn } from 'lucide-react'
 
 const ADMIN_CREDENTIALS = {
-  email: 'example@gmail.com',
-  password: 'w9pR5MTrduFu9mUaYBuc'
+  email: 'rocha.joao.victor.50@gmail.com',
+  password: '9PMan04TgqeGg1TcJV4qeTTKfsM'
 }
 
 export default function AdminLoginPage() {
@@ -19,7 +19,7 @@ export default function AdminLoginPage() {
     // Verificar se já está logado
     const isLoggedIn = localStorage.getItem('hypefy-admin-logged')
     if (isLoggedIn === 'true') {
-      window.location.href = '/admin/dashboard'
+      window.location.href = '/admin-hype-fy/dashboard'
     }
   }, [])
 
@@ -32,7 +32,7 @@ export default function AdminLoginPage() {
     setTimeout(() => {
       if (email === ADMIN_CREDENTIALS.email && password === ADMIN_CREDENTIALS.password) {
         localStorage.setItem('hypefy-admin-logged', 'true')
-        window.location.href = '/admin/dashboard'
+        window.location.href = '/admin-hype-fy/dashboard'
       } else {
         setError('E-mail ou senha incorretos')
       }

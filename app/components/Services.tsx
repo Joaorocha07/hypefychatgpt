@@ -22,7 +22,8 @@ const services = [
       'Utilizado para estudo',
       'Conta compartilhada'
     ],
-    buyLink: 'https://pay.cakto.com.br/3627vxe_425199'
+    buyLink: 'https://pay.cakto.com.br/3627vxe_425199',
+    newTab: true
   },
   {
     title: 'CANVA POR UM ANO',
@@ -34,7 +35,8 @@ const services = [
       'Todos os recursos premium liberado',
       'Com privacidade'
     ],
-    buyLink: 'https://pay.cakto.com.br/ks35m3b_425403'
+    buyLink: 'https://pay.cakto.com.br/ks35m3b_425403',
+    newTab: true
   },
   {
     title: 'CAP CUT POR UM MÊS',
@@ -46,7 +48,8 @@ const services = [
       'Você recebe um e-mail e a senha',
       'Tenha o acesso por um mês'
     ],
-    buyLink: 'https://api.whatsapp.com/send/?phone=553498262737&text=Ol%C3%A1%2C+tenho+interesse+em+assinar+o+cap+cut+por+um+m%C3%AAs%21&type=phone_number&app_absent=0&utm_source=chatgpt.com'
+    buyLink: 'https://api.whatsapp.com/send/?phone=553498262737&text=Ol%C3%A1%2C+tenho+interesse+em+assinar+o+cap+cut+por+um+m%C3%AAs%21&type=phone_number&app_absent=0&utm_source=chatgpt.com',
+    newTab: true
   },
   {
     title: 'NETFLIX POR UM MÊS',
@@ -58,7 +61,8 @@ const services = [
       'Pague menos e aproveite muito',
       'Tenha o acesso por um mês'
     ],
-    buyLink: 'https://api.whatsapp.com/send/?phone=553498262737&text=Ol%C3%A1%2C+tenho+interesse+em+assinar+a+netflix+por+um+m%C3%AAs%21&type=phone_number&app_absent=0&utm_source=chatgpt.com'
+    buyLink: 'https://api.whatsapp.com/send/?phone=553498262737&text=Ol%C3%A1%2C+tenho+interesse+em+assinar+a+netflix+por+um+m%C3%AAs%21&type=phone_number&app_absent=0&utm_source=chatgpt.com',
+    newTab: true
   },
   {
     title: 'CRUNCHYROLL POR UM MÊS',
@@ -70,7 +74,8 @@ const services = [
       'Pague menos e aproveite muito',
       'Tenha o acesso por um mês'
     ],
-    buyLink: 'https://api.whatsapp.com/send/?phone=553498262737&text=Ol%C3%A1%2C+tenho+interesse+em+assinar+a+crunchroll+por+um+m%C3%AAs%21&type=phone_number&app_absent=0&utm_source=chatgpt.com'
+    buyLink: 'https://api.whatsapp.com/send/?phone=553498262737&text=Ol%C3%A1%2C+tenho+interesse+em+assinar+a+crunchroll+por+um+m%C3%AAs%21&type=phone_number&app_absent=0&utm_source=chatgpt.com',
+    newTab: true
   },
   {
     title: 'SERVIÇOS DE ENGAJAMENTO',
@@ -82,7 +87,8 @@ const services = [
       'Me chame no whatsapp para mais informações',
       'Só clicar no botão comprar'
     ],
-    buyLink: 'https://api.whatsapp.com/send/?phone=553498262737&text=Ol%C3%A1%2C+tenho+interesse+em+servi%C3%A7os+de+engajamento+para+minhas+redes+sociais%21&type=phone_number&app_absent=0&utm_source=chatgpt.com'
+    buyLink: '/precos',
+    newTab: false
   }
 ]
 
@@ -131,7 +137,7 @@ export default function Services() {
                   ))}
                 </ul>
 
-                <button onClick={() => window.open(service.buyLink, '_blank')} className="w-full bg-gradient-to-r from-[#ffa800] to-[#ff8c00] text-white py-3 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group">
+                <button onClick={() => window.open(service.buyLink, service.newTab ? "_blank" : "_self")} className="w-full bg-gradient-to-r from-[#ffa800] to-[#ff8c00] text-white py-3 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group">
                   Comprar
                   <ExternalLink size={16} className="group-hover:translate-x-1 transition-transform duration-200" />
                 </button>
