@@ -57,9 +57,9 @@ interface ChatGPTSubscription {
 }
 
 const defaultPricing: PricingData = {
-  instagram: { mundial: 26, brasileiro: 45 },
-  tiktok: { mundial: 18, brasileiro: 30, curtidas: 15, visualizacoes: 15 },
-  youtube: { inscricoes: 35, visualizacoes: 12, curtidas: 18 },
+  instagram: { mundial: 26, brasileiro: 55 },
+  tiktok: { mundial: 20, brasileiro: 32, curtidas: 15, visualizacoes: 15 },
+  youtube: { inscricoes: 45, visualizacoes: 12, curtidas: 15 },
   kwai: { seguidores: 25, curtidas: 12 },
   facebook: { seguidores: 28, curtidas: 10 }
 }
