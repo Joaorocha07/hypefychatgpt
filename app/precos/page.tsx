@@ -43,18 +43,18 @@ interface PricingData {
 const defaultPricing: PricingData = {
   instagram: {
     mundial: 26,
-    brasileiro: 45,
+    brasileiro: 55,
     curtidas: 15,
     visualizacoes: 15
   },
   tiktok: {
-    mundial: 18,
+    mundial: 20,
     brasileiro: 30,
     curtidas: 15,
     visualizacoes: 15
   },
   youtube: {
-    inscricoes: 80,
+    inscricoes: 70,
     visualizacoes: 15,
     curtidas: 12,
     visualizacoesShorts: 20
