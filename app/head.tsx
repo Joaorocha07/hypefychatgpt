@@ -27,7 +27,7 @@ export default function CustomHead({ title }: CustomHeadProps): JSX.Element {
           t.src=v;s=b.getElementsByTagName(e)[0];
           s.parentNode.insertBefore(t,s)}(window, document,'script',
           'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', '2076724359746881');
+          fbq('init', '836547888904543');
           fbq('track', 'PageView');
         `}
       </Script>
@@ -37,7 +37,7 @@ export default function CustomHead({ title }: CustomHeadProps): JSX.Element {
           height="1"
           width="1"
           style={{ display: "none" }}
-          src="https://www.facebook.com/tr?id=2076724359746881&ev=PageView&noscript=1"
+          src="https://www.facebook.com/tr?id=836547888904543&ev=PageView&noscript=1"
           alt=""
         />
       </noscript>
