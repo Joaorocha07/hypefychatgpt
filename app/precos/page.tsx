@@ -42,8 +42,8 @@ interface PricingData {
 // Dados padrão
 const defaultPricing: PricingData = {
   instagram: {
-    mundial: 26,
-    brasileiro: 45,
+    mundial: 27,
+    brasileiro: 46,
     curtidas: 15,
     visualizacoes: 15
   },
@@ -54,7 +54,7 @@ const defaultPricing: PricingData = {
     visualizacoes: 15
   },
   youtube: {
-    inscricoes: 80,
+    inscricoes: 130,
     visualizacoes: 15,
     curtidas: 12,
     visualizacoesShorts: 20
