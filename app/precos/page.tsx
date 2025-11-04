@@ -48,7 +48,7 @@ const defaultPricing: PricingData = {
     visualizacoes: 15
   },
   tiktok: {
-    mundial: 18,
+    mundial: 20,
     brasileiro: 30,
     curtidas: 15,
     visualizacoes: 15
